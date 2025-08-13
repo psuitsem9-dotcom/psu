@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>student registration</title>
+</head>
+<body>
+<center>
+<h1>Student List</h1>
+<form method="POST" action="/add_student">
+<input type="text" name="name" placeholder="Name" required><br><br>
+<input type="text" name="faculty" placeholder="Faculty" required><br><br>
+<button type="submit">Add Student</button><br><br>
+</form>
+<table border="1" cellpadding="5" cellspacing="0">
+<tr>
+<th>ID</th>
+<th>Name</th>
+<th>Faculty</th>
+<th>Actions</th>
+</tr>
+{% for student in students %}
+<tr>
+<td>{{ student.id }}</td>
+<td>{{ student.name }}</td>
+<td>{{ student.faculty }}</td>
+<td>
+<a href="/edit_student/{{ student.id }}">Edit</a> |
+<a href="/delete_student/{{ student.id }}" onclick="return
+confirm('Are you sure?');">Delete</a>
+</td>
+</tr>
+{% endfor %}
+</table>
+</center>
+</body>
+</html>
